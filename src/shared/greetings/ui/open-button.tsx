@@ -1,5 +1,4 @@
-import { FC, MouseEvent } from "react";
-import { useFade } from "../../fade/api/store";
+import { FC } from "react";
 import "./styles.css";
 import { useGreetings } from "../api/store";
 import { Button } from "@chakra-ui/react";
