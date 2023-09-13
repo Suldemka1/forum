@@ -9,7 +9,7 @@ const router = createBrowserRouter(
   )
 )
 
-function App() {
+function AppRouter() {
 
   return (
     <>
@@ -18,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default AppRouter
