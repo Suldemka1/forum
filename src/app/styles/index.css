@@ -63,3 +63,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.overflow__hidden::-webkit-scrollbar {
+  display: none;
+}

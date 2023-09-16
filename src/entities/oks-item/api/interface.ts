@@ -1,55 +1,12 @@
-interface IMapPoint {
-  type: "Feature";
-  properties: {
-    BUILDING: "yes" | "apartments" | "school" | "transportation" | "kindergarten" | "hotel";
-    ADDR_CITY: string | null;
-    A_STRT: string | null;
-    A_SBRB: null;
-    A_HSNMBR: null;
-    A_PLACE: null;
-    A_PSTCD: null;
-    B_LEVELS: null;
-    NAME: null;
-    NAME_EN: null;
-    NAME_RU: null;
-    OSM_TYPE: "relation";
-    OSM_ID: 1901738;
-  };
-  geometry: {
-    type: "MultiPolygon";
-    coordinates: [
-      [
-        [
-          [94.4118213, 51.6981364],
-          [94.4117865, 51.6982937],
-          [94.4119784, 51.69831],
-          [94.4120072, 51.6981798],
-          [94.412188, 51.6981952],
-          [94.4121395, 51.6984146],
-          [94.4123628, 51.6984335],
-          [94.4124113, 51.698214],
-          [94.4125873, 51.6982289],
-          [94.4125595, 51.6983547],
-          [94.4127727, 51.6983728],
-          [94.4129047, 51.6977758],
-          [94.4118902, 51.6976896],
-          [94.4118628, 51.6978137],
-          [94.4121331, 51.6978366],
-          [94.4120807, 51.698074],
-          [94.411879, 51.6980569],
-          [94.4118935, 51.6979913],
-          [94.4116256, 51.6979685],
-          [94.4115928, 51.698117],
-          [94.4118213, 51.6981364]
-        ],
-        [
-          [94.4123044, 51.6978676],
-          [94.4126562, 51.6979019],
-          [94.4125962, 51.6981389],
-          [94.4122444, 51.6981046],
-          [94.4123044, 51.6978676]
-        ]
-      ]
-    ];
-  };
+export interface IOksItem {
+  title: string
+  region: string
+  locality: string
+  street: string
+  house: string
+  customer: string
+  developer: string
+  images: Array<string>
+  start: Date
+  end: Date
 }

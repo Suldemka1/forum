@@ -1,7 +1,7 @@
-import { MouseEventHandler } from "react"
+import { MouseEventHandler } from "react";
 
 export interface IUseGreetings {
-  isOpen: boolean
-  setGreetingsOpen: MouseEventHandler
-  setGreetingsClosed: () => void
+  isOpen: boolean;
+  setGreetingsOpen: () => void;
+  setGreetingsClosed: () => void;
 }

@@ -1,13 +1,13 @@
 import { Map } from "../entities/map";
-import { Fade } from "../shared/fade";
+import { BuildingsList } from "../entities/oks-item/ui/oks-list";
 import { Greetings } from "../shared/greetings";
 
 const Home = () => {
   return (
     <>
       <Map />
-      <Fade />
       <Greetings />
+      <BuildingsList />
     </>
   );
 };
