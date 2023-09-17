@@ -1,5 +1,5 @@
 import { Map } from "../entities/map";
-import { BuildingsList } from "../entities/oks-item/ui/oks-list";
+import { OksDrawer } from "../entities/oks-item/ui/oks-drawer";
 import { Greetings } from "../shared/greetings";
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <Map />
       <Greetings />
-      <BuildingsList />
+      <OksDrawer />
     </>
   );
 };

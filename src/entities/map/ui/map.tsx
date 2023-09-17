@@ -3,7 +3,6 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import polygons from "../../../polygons.json"
 import { Kozhuuns } from "./kozhuuns";
 
-
 const Map: FC = () => {
 
   return (
@@ -17,7 +16,6 @@ const Map: FC = () => {
       zoom={7}
       maxZoom={20}
       minZoom={5}
-      // zoomControl={false}
       scrollWheelZoom={true}
       doubleClickZoom={false}
       attributionControl={false}

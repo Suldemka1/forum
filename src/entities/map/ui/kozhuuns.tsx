@@ -1,23 +1,36 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
-import { FC, useMemo } from "react";
-import { GeoJSON, Marker, Popup, useMap } from "react-leaflet";
+import { FC } from "react";
+import { GeoJSON, Marker, useMap } from "react-leaflet";
 import L from "leaflet"
 import { useKozhuun } from "../api/useKozhuun";
 import { useOksPanel } from "../../oks-item/api/useOksPanel";
+import { useOksFilter } from "../../oks-item/api/useOksFilter";
+import { useOksData } from "../../oks-item/api/useOksData";
 
 const Kozhuuns: FC<Pick<GeoJSON.FeatureCollection<GeoJSON.Polygon, GeoJSON.GeoJsonProperties>, "features">> = ({ features }) => {
   const map = useMap()
-  const { data, getKozhuunData, setKozhuunDataToNull } = useKozhuun((state) => state)
-  //@ts-ignore
+  const { id, setKozhuun } = useKozhuun((state) => state)
+  const { setFilter, setFilterToNull } = useOksFilter()
+  const { data, setData } = useOksData()
+
   const { setIsOpen } = useOksPanel()
 
-  const eventHandlers: LeafletEventHandlerFnMap = useMemo(() => ({
+  const eventHandlers: LeafletEventHandlerFnMap = ({
     click: async function (e: LeafletMouseEvent) {
-      const geo = L.geoJson(e.propagatedFrom.feature)
-      await getKozhuunData(e.propagatedFrom.feature.geometry.properties.description)
-      map.fitBounds(geo.getBounds())
+      const { feature } = e.propagatedFrom
+      const { description: kozhuun, id: kozhuunId } = e.propagatedFrom.feature.geometry.properties
+
+      if (e.propagatedFrom.feature.geometry.properties.id != id) {
+        setKozhuun(Number(kozhuunId))
+        setFilterToNull()
+        setFilter("region", kozhuun)
+        setData()
+        console.log(data)
+      }
+
+      map.fitBounds(L.geoJson(feature).getBounds())
     }
-  }), [])
+  })
 
   return (
     <>
@@ -28,23 +41,26 @@ const Kozhuuns: FC<Pick<GeoJSON.FeatureCollection<GeoJSON.Polygon, GeoJSON.GeoJs
               <GeoJSON key={index} data={item.geometry as GeoJSON.Polygon}
                 onEachFeature={(feature, layer) => {
                   feature.properties = { ...item.properties }
+                  feature.properties.id = item.id
                 }}
                 eventHandlers={eventHandlers}
-              >
-                <Popup>{data}</Popup>
-              </GeoJSON>
+              />
             )
         })
       }
       {
         data?.map((element: any) => {
           return (
-            <Marker key={element?.id} position={[element?.location?.coordinates[1], element?.location?.coordinates[0]]} eventHandlers={{
-              click: () => {
-                setIsOpen(true)
-              }
-            }}></Marker>
-
+            <Marker
+              key={element?.id}
+              position={[element?.
+                location?.coordinates[1],
+              element?.location?.coordinates[0]]}
+              eventHandlers={{
+                click: () => {
+                  setIsOpen(true)
+                }
+              }}></Marker>
           )
         })
       }
