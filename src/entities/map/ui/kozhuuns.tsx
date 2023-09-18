@@ -49,7 +49,7 @@ const Kozhuuns: FC<
             <GeoJSON
               key={index}
               data={item.geometry as GeoJSON.Polygon}
-              onEachFeature={(feature, layer) => {
+              onEachFeature={(feature) => {
                 feature.properties = { ...item.properties };
                 feature.properties.id = item.id;
               }}

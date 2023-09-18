@@ -3,13 +3,13 @@ import { Box } from "@chakra-ui/react";
 import { useBoundingRect } from "../hooks";
 
 const Slider: FC<any> = ({
-  setTrackIsActive,
+  // setTrackIsActive,
   initSliderWidth,
-  setActiveItem,
-  activeItem,
-  constraint,
-  itemWidth,
-  positions,
+  // setActiveItem,
+  // activeItem,
+  // constraint,
+  // itemWidth,
+  // positions,
   children,
   gap
 }) => {
@@ -23,19 +23,19 @@ const Slider: FC<any> = ({
 
   }, [width, initSliderWidth]);
 
-  const handleFocus = () => setTrackIsActive(true);
+  // const handleFocus = () => setTrackIsActive(true);
 
-  const handleDecrementClick = () => {
-    setTrackIsActive(true);
-    !(activeItem === positions.length - positions.length) &&
-      setActiveItem((prev: number) => prev - 1);
-  };
+  // const handleDecrementClick = () => {
+  //   setTrackIsActive(true);
+  //   !(activeItem === positions.length - positions.length) &&
+  //     setActiveItem((prev: number) => prev - 1);
+  // };
 
-  const handleIncrementClick = () => {
-    setTrackIsActive(true);
-    !(activeItem === positions.length - constraint) &&
-      setActiveItem((prev: number) => prev + 1);
-  };
+  // const handleIncrementClick = () => {
+  //   setTrackIsActive(true);
+  //   !(activeItem === positions.length - constraint) &&
+  //     setActiveItem((prev: number) => prev + 1);
+  // };
 
   return (
     <>

@@ -15,7 +15,7 @@ const CarouselItem: FC<ICarouselItem> = ({
 }) => {
   const [userDidTab, setUserDidTab] = useState(false);
 
-  const handleFocus = (e: React.FocusEvent<HTMLDivElement>) => {
+  const handleFocus = () => {
     setTrackIsActive(true);
   }
 
