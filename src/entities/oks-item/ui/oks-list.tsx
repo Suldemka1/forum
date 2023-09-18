@@ -7,6 +7,7 @@ import { useOksData } from "../api/useOksData.js";
 
 const OksList: FC = () => {
   const { data } = useOksData()
+  const id = useId()
   return (
     <Box
       display={"flex"}
@@ -17,9 +18,8 @@ const OksList: FC = () => {
       zIndex={600}
     >
       {
-        data?.map((item) => {
-          const id = useId()
-          console.log(item)
+        data?.map((item,index) => {
+          
           return (
             <Box
               bgColor={"blue.500"}
@@ -28,7 +28,7 @@ const OksList: FC = () => {
               p={4}
               cursor={"pointer"}
               zIndex={600}
-              key={id}
+              key={String(id).concat(String(index))}
             >
               <Heading
                 as={"p"}

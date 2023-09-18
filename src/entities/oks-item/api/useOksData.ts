@@ -6,7 +6,7 @@ const useOksData = create<IUseOksData>()((set) => ({
   data: [],
   setData: async () => {
     const data = await fetch(
-      `https://gisoks.ru/cms/items/projects?${useOksFilter.getState().filter}`,
+      `https://gisoks.ru/cms/items/projects?${useOksFilter.getState().filter}filter[status]=published`,
       {
         method: "GET",
         mode: "cors",

@@ -16,7 +16,7 @@ const ImageViewer: FC<IImageViewer> = ({ images }) => {
       <Box minH={200}>
         <ChakraCarousel gap={32}>
           {
-            images.map((item: string) => <Box key={item}>
+            images?.map((item: string) => <Box key={item}>
               <Image
                 draggable={false}
                 src={item}

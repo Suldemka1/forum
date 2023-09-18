@@ -1,6 +1,6 @@
 import { Polygon } from "leaflet";
 
-export interface IOksData {}
+export interface IOksData { }
 
 export interface IUseOksData {
   data: Array<IOksItem>;
@@ -60,4 +60,5 @@ export interface IUseOksFilter {
   filter: string;
   setFilter: (prop_name: string, name: string) => void;
   setFilterToNull: () => void;
+  removeFilter: (prop_name: string) => void
 }

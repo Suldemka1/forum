@@ -24,7 +24,7 @@ const useOksFilter = create<IUseOksFilter>()((set, get) => ({
       });
     }
 
-    get().filters.forEach((item, index) => {
+    get().filters.forEach((item) => {
       newFilterString =
         newFilterString + `filter[${item.prop_name}][_eq]=${item.name}&`;
     });
@@ -37,6 +37,19 @@ const useOksFilter = create<IUseOksFilter>()((set, get) => ({
     set({
       filters: [],
     }),
+  removeFilter: (prop_name) => {
+    let newFilterString = "";
+    const arr = get().filters.filter((item) => item.prop_name != prop_name)
+    set({ filters: [...arr] })
+    get().filters.forEach((item) => {
+      newFilterString =
+        newFilterString + `filter[${item.prop_name}][_eq]=${item.name}&`;
+    });
+    set({
+      filter: newFilterString,
+    });
+    console.log(get().filters)
+  }
 }));
 
 export { useOksFilter };

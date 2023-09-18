@@ -14,7 +14,7 @@ const useOksPanel = create<IUseOksPanel>()((set) => ({
     locality: "Какое-то село",
     street: "Ленина",
     house: "14",
-    images: ["/i.webp", "/boss.png", "/vite.svg", "/icons/location.png"],
+    images: ["/i.webp", "/vite.svg", "/icons/location.png", "/i.webp"],
     customer: "Министерство здравоохранения Республики Тыва",
     developer: "ООО 'Рога и Копыта'",
     start: "12.05.2021",
