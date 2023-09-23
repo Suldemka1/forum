@@ -39,14 +39,14 @@ export interface IOksPanel {
   images: Array<string>;
   customer: string;
   developer: string;
-  start: string;
-  end: string;
+  start: any;
+  end: any;
 }
 
 export interface IUseOksPanel {
   isOpen: boolean;
   setIsOpen: (state: boolean) => void;
-
+  setPanelData: (data: Pick<IUseOksPanel, "panel">) => void
   panel: IOksPanel;
 }
 

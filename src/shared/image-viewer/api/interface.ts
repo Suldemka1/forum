@@ -1,3 +1,3 @@
 export interface IImageViewer {
-  images: Array<string>
+  images: Array<any>
 }

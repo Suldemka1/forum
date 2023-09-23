@@ -17,6 +17,7 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const GreetingsBanner: FC = () => {
   const { isOpen, setGreetingsClosed } = useGreetings();
@@ -46,12 +47,7 @@ const GreetingsBanner: FC = () => {
                 h={"full"}
               >
                 <Stack direction={"row"}>
-                  <Image
-                    src="/boss.png"
-                    h={"24"}
-                    w={"24"}
-                    borderRadius={"6"}
-                  />
+                  <Image src="/boss.png" h={"24"} w={"24"} borderRadius={"6"} />
                   <Box>
                     <Heading fontWeight={"medium"} fontSize={26}>
                       В.Т. Ховалыг
@@ -61,35 +57,35 @@ const GreetingsBanner: FC = () => {
                       fontSize={22}
                       color={"blue.500"}
                     >
-                      Председатель Главы Республики Тыва
+                      <Link to={"https://rtyva.ru"}>Председатель Главы Республики Тыва</Link>
                     </Heading>
                   </Box>
                 </Stack>
 
                 <Text fontSize={18}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse.
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum Ut enim ad minim
+                  veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse.
                 </Text>
 
                 <Text fontSize={18}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse.
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum Ut enim ad minim
+                  veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse.
                 </Text>
               </Stack>
             </GridItem>

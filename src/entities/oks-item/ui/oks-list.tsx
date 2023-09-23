@@ -1,13 +1,14 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { FC, useId } from "react";
 //@ts-ignore
-import ChakraCarousel from "../../../shared/carousel/ui/carousel.jsx"
+import ChakraCarousel from "../../../shared/carousel/ui/carousel.jsx";
 import { useOksData } from "../api/useOksData.js";
-
+import { useOksPanel } from "../api/useOksPanel.js";
 
 const OksList: FC = () => {
-  const { data } = useOksData()
-  const id = useId()
+  const { data } = useOksData();
+  const id = useId();
+  const { setPanelData } = useOksPanel();
   return (
     <Box
       display={"flex"}
@@ -17,34 +18,33 @@ const OksList: FC = () => {
       className="overflow__hidden"
       zIndex={600}
     >
-      {
-        data?.map((item,index) => {
-          
-          return (
-            <Box
-              bgColor={"blue.500"}
-              color={"whiteAlpha.900"}
-              borderRadius={8}
-              p={4}
-              cursor={"pointer"}
-              zIndex={600}
-              key={String(id).concat(String(index))}
+      {data?.map((item, index) => {
+        return (
+          <Box
+            bgColor={"blue.500"}
+            color={"whiteAlpha.900"}
+            borderRadius={8}
+            p={4}
+            cursor={"pointer"}
+            zIndex={600}
+            key={String(id).concat(String(index))}
+            onClick={() => {
+              setPanelData({ panel: item });
+            }}
+          >
+            <Heading
+              as={"p"}
+              fontSize={20}
+              textOverflow={"ellipsis"}
+              lineHeight={"5"}
             >
-              <Heading
-                as={"p"}
-                fontSize={20}
-                textOverflow={"ellipsis"}
-                lineHeight={"5"}
-              >
-                {item.name}
-              </Heading>
-              <Text>{item.customer}</Text>
-            </Box>
-          )
-        })
-      }
+              {item.name}
+            </Heading>
+            <Text>{item.customer}</Text>
+          </Box>
+        );
+      })}
     </Box>
-
   );
 };
 

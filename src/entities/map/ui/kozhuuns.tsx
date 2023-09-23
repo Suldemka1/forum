@@ -6,6 +6,8 @@ import { useKozhuun } from "../api/useKozhuun";
 import { useOksPanel } from "../../oks-item/api/useOksPanel";
 import { useOksFilter } from "../../oks-item/api/useOksFilter";
 import { useOksData } from "../../oks-item/api/useOksData";
+import { constructionIcon, repairIcon } from "../../../app/constants/marker";
+import { background } from "@chakra-ui/react";
 
 const Kozhuuns: FC<
   Pick<
@@ -15,6 +17,7 @@ const Kozhuuns: FC<
 > = ({ features }) => {
   const map = useMap();
   const { id, setKozhuun } = useKozhuun((state) => state);
+  const { setPanelData } = useOksPanel();
   const { setFilter, setFilterToNull } = useOksFilter();
   const { data, setData } = useOksData();
 
@@ -53,6 +56,11 @@ const Kozhuuns: FC<
                 feature.properties = { ...item.properties };
                 feature.properties.id = item.id;
               }}
+              style={{
+                weight: 2,
+                color: "#000000",
+                fillColor: "#e78912"
+              }}
               eventHandlers={eventHandlers}
             />
           );
@@ -62,6 +70,11 @@ const Kozhuuns: FC<
           return (
             <Marker
               key={element?.id}
+              icon={
+                element?.type === "Строительство"
+                  ? constructionIcon
+                  : repairIcon
+              }
               position={[
                 element?.location?.coordinates[1],
                 element?.location?.coordinates[0],
@@ -69,6 +82,7 @@ const Kozhuuns: FC<
               eventHandlers={{
                 click: () => {
                   setIsOpen(true);
+                  setPanelData({ panel: element });
                 },
               }}
             ></Marker>

@@ -3,9 +3,8 @@ import { IUseOksPanel } from "./interface";
 
 const useOksPanel = create<IUseOksPanel>()((set) => ({
   isOpen: true,
-  setIsOpen: (isOpen: boolean) => set({ isOpen: isOpen }),
-  setPanelData: (data: Pick<IUseOksPanel, "panel">) =>
-    set({ panel: data.panel }),
+  setIsOpen: (isOpen) => set({ isOpen: isOpen }),
+  setPanelData: (data) => set({ panel: data.panel }),
   panel: {
     type: "Строительство",
     name: "Название проекта, обычно длинное, примерно столько",

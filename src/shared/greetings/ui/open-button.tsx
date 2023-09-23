@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./styles.css";
 import { useGreetings } from "../api/store";
-import { Button } from "@chakra-ui/react";
+import { Button, Icon } from "@chakra-ui/react";
 
 const GreetingsControl: FC = () => {
   const { setGreetingsOpen } = useGreetings();
@@ -11,8 +11,12 @@ const GreetingsControl: FC = () => {
       position={"fixed"}
       onClick={setGreetingsOpen}
       className="greetings-control"
+      margin={[10, 5, 5, 5]}
+      borderWidth={2}
+      borderStyle={"solid"}
+      borderColor={"black"}
     >
-      open greetings
+      <Icon />
     </Button>
   );
 };

@@ -8,3 +8,29 @@
 
   min-height: 100lvh;
 }
+
+.custom-marker-cluster{
+  background: #ffffff;
+  border: 5px solid #f00800;
+  border-radius: 50%;
+  color: #000000;
+  line-height: 25px;
+
+  width: 100px;
+  height: 100px;
+  /* background-color: greenyellow; */
+  text-align: center;
+  font-size: 20px;
+}
+
+.mycluster {
+  width: 40px;
+  height: 40px;
+  background-color: greenyellow;
+  text-align: center;
+  font-size: 24px;
+}
+
+.construction-icon {
+  content: url("../../../public/icons/location-marker.svg");
+}
