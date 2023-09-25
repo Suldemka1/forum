@@ -8,6 +8,7 @@ const useOksPanel = create<IUseOksPanel>()((set) => ({
   panel: {
     type: "Строительство",
     name: "Название проекта, обычно длинное, примерно столько",
+    project_name: "",
     quantity: 2,
     region: "Тоджинский кожуун",
     locality: "Какое-то село",

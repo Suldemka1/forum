@@ -1,6 +1,6 @@
 import { Polygon } from "leaflet";
 
-export interface IOksData { }
+export interface IOksData {}
 
 export interface IUseOksData {
   data: Array<IOksItem>;
@@ -11,7 +11,7 @@ export interface IOksItem {
   type: string;
   name: string;
   quantity: number;
-
+  project_name: string;
   location: Polygon;
 
   region: string;
@@ -31,6 +31,7 @@ export interface IOksItem {
 export interface IOksPanel {
   type: string;
   name: string;
+  project_name: string;
   quantity: number;
   region: string;
   locality: string;
@@ -46,19 +47,34 @@ export interface IOksPanel {
 export interface IUseOksPanel {
   isOpen: boolean;
   setIsOpen: (state: boolean) => void;
-  setPanelData: (data: Pick<IUseOksPanel, "panel">) => void
+  setPanelData: (data: Pick<IUseOksPanel, "panel">) => void;
   panel: IOksPanel;
 }
 
-export interface IFilterObject {
+export interface IParamsObject {
   prop_name: string;
   name: string;
 }
 
+export interface IFilterGroup {
+  filter_name: string;
+  values: Set<string>;
+  selectedValue: string | undefined;
+}
+
 export interface IUseOksFilter {
-  filters: Array<IFilterObject>;
-  filter: string;
-  setFilter: (prop_name: string, name: string) => void;
-  setFilterToNull: () => void;
-  removeFilter: (prop_name: string) => void
+  query_params: Array<IParamsObject>;
+  query: string;
+
+  isFiltersConstructed: boolean;
+  setFiltersConstructed: (state: boolean) => void;
+
+  filters: Array<IFilterGroup>;
+  addFilterGroup: (filter_name: string, values: Set<string>) => void;
+  addValueToFilterGroup: (filter_name: string, value: string) => void;
+  setSelectedValueOnFilter: (filter_name: string, selected_value: string) => void;
+
+  setQueryParams: (prop_name: string, name: string) => void;
+  removeAllQueryParams: () => void;
+  removeQueryParamByName: (prop_name: string) => void;
 }

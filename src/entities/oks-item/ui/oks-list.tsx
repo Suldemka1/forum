@@ -1,7 +1,5 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { FC, useId } from "react";
-//@ts-ignore
-import ChakraCarousel from "../../../shared/carousel/ui/carousel.jsx";
 import { useOksData } from "../api/useOksData.js";
 import { useOksPanel } from "../api/useOksPanel.js";
 

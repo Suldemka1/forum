@@ -1,9 +1,11 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import polygons from "../../../polygons.json";
 import { Kozhuuns } from "./kozhuuns";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
+import { useOksData } from "../../oks-item/api/useOksData";
+import { useOksFilter } from "../../oks-item/api/useOksFilter";
 
 const createClusterCustomIcon = function (cluster: any) {
   return L.divIcon({
@@ -14,6 +16,13 @@ const createClusterCustomIcon = function (cluster: any) {
 };
 
 const Map: FC = () => {
+  const { setData } = useOksData()
+  const { query_params } = useOksFilter()
+
+  useEffect(() => {
+    setData()
+  }, [query_params])
+
   return (
     <MapContainer
       className="map"
@@ -32,7 +41,7 @@ const Map: FC = () => {
       <MarkerClusterGroup
         // onClick={(e: React.MouseEvent) => console.log('onClick', e)}
         iconCreateFunction={createClusterCustomIcon}
-        maxClusterRadius={200}
+        maxClusterRadius={40}
         spiderfyOnMaxZoom={true}
         polygonOptions={{
           fillColor: '#ffffff',

@@ -7,7 +7,6 @@ import { useOksPanel } from "../../oks-item/api/useOksPanel";
 import { useOksFilter } from "../../oks-item/api/useOksFilter";
 import { useOksData } from "../../oks-item/api/useOksData";
 import { constructionIcon, repairIcon } from "../../../app/constants/marker";
-import { background } from "@chakra-ui/react";
 
 const Kozhuuns: FC<
   Pick<
@@ -18,7 +17,7 @@ const Kozhuuns: FC<
   const map = useMap();
   const { id, setKozhuun } = useKozhuun((state) => state);
   const { setPanelData } = useOksPanel();
-  const { setFilter, setFilterToNull } = useOksFilter();
+  const { setQueryParams, setSelectedValueOnFilter, removeAllQueryParams } = useOksFilter();
   const { data, setData } = useOksData();
 
   const { setIsOpen } = useOksPanel();
@@ -31,10 +30,10 @@ const Kozhuuns: FC<
 
       if (e.propagatedFrom.feature.geometry.properties.id != id) {
         setKozhuun(Number(kozhuunId));
-        setFilterToNull();
-        setFilter("region", kozhuun);
+        removeAllQueryParams();
+        setQueryParams("region", kozhuun);
+        setSelectedValueOnFilter("region", kozhuun)
         setData();
-        console.log(data);
       }
 
       map.fitBounds(L.geoJson(feature).getBounds());

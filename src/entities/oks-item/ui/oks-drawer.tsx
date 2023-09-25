@@ -13,8 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { FC, useEffect } from "react";
 import { useOksPanel } from "../api/useOksPanel.js";
-//@ts-ignore
-import ChakraCarousel from "../../../shared/carousel/ui/carousel.js";
 import { OksFilter } from "./oks-filter.js";
 import { OksList } from "./oks-list.js";
 import { ImageViewer } from "../../../shared/image-viewer/index.js";
@@ -23,9 +21,11 @@ import { useOksData } from "../api/useOksData.js";
 const OksDrawer: FC = () => {
   const { isOpen, setIsOpen, panel } = useOksPanel();
   const { setData } = useOksData();
+
   useEffect(() => {
     setData();
   }, []);
+
   return (
     <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
       <DrawerOverlay></DrawerOverlay>
