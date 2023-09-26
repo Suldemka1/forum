@@ -1,15 +1,9 @@
 import { Heading, Select, Stack, useToast } from "@chakra-ui/react";
 import { useOksFilter } from "../api/useOksFilter.js";
-import { useEffect } from "react";
 
 const OksFilter = () => {
   const toast = useToast();
   const { setQueryParams, removeQueryParamByName, filters } = useOksFilter();
-
-  useEffect(() => {
-    console.log(filters.length)
-
-  }, [])
 
   return (
     <Stack direction={"column"} gap={5}>

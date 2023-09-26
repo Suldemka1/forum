@@ -32,7 +32,7 @@ const OksDrawer: FC = () => {
 
       <DrawerContent maxW={"7xl"}>
         <DrawerHeader pt={10}>
-          <Heading fontSize={28}>{panel.name}</Heading>
+          <Heading fontSize={28}>{panel?.name}</Heading>
         </DrawerHeader>
         <DrawerCloseButton onClick={() => setIsOpen(false)} />
 
@@ -50,9 +50,9 @@ const OksDrawer: FC = () => {
             gap={4}
             className="overflow__hidden"
           >
-            <ImageViewer images={panel.images} />
+            <ImageViewer images={panel?.images} />
 
-            <Text fontSize={20}>
+            {/* <Text fontSize={20}>
               У нас современное пространство , погружение в лес через
               современные технологии. ЛЕС - уникальное новое интерактивное
               игровое пространство, посвящённое любви к природе, площадью 1000
@@ -60,35 +60,35 @@ const OksDrawer: FC = () => {
               панорамный кинотеатр уютное ЛЕСное кафе Новый мультимедийный
               формат - на территории одного из самых крупных парков Москвы -
               ВДНХ, в котором гости попадают в красочный мир природы.
-            </Text>
+            </Text> */}
 
             <Stack direction={"row"}>
-              <Tag>
-                <Heading fontSize={20} px={4} py={2}>
-                  {panel.customer}
+              <Tag bg={"#1f1f50"}>
+                <Heading color={"#FFF"} fontSize={20} px={4} py={2}>
+                  {panel?.customer}
                 </Heading>
               </Tag>
-              <Tag>
-                <Heading fontSize={20} px={4} py={2}>
-                  {panel.developer}
+              <Tag bg={"#1f1f50"}>
+                <Heading color={"#FFF"} fontSize={20} px={4} py={2}>
+                  {panel?.developer}
                 </Heading>
               </Tag>
             </Stack>
 
             <Stack direction={"row"} py={2}>
               <Image src="/icons/location.png" w={6} />
-              <Text>{panel.region},</Text>
-              <Text>город</Text>
-              <Text>{panel.locality},</Text>
+              <Text>{panel?.region},</Text>
+              <Text>населенный пункт</Text>
+              <Text>{panel?.locality},</Text>
               <Text>улица</Text>
-              <Text>{panel.street},</Text>
+              <Text>{panel?.street},</Text>
               <Text>дом</Text>
-              <Text>{panel.house}</Text>
+              <Text>{panel?.house}</Text>
             </Stack>
 
             <Stack w={"full"} direction={"row"} gap={10}>
-              <Text>Дата начала: {panel.start}</Text>
-              <Text>Дата окончания: {panel.end}</Text>
+              <Text>Дата начала: {panel?.start}</Text>
+              <Text>Дата окончания: {panel?.end}</Text>
             </Stack>
           </DrawerBody>
 

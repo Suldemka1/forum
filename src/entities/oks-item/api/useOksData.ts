@@ -2,12 +2,15 @@ import { create } from "zustand";
 import { IOksItem, IUseOksData } from "./interface";
 import { useOksFilter } from "./useOksFilter";
 import { GET_OPTIONS } from "../../../app/constants/http";
+import { useOksPanel } from "./useOksPanel";
 
 const useOksData = create<IUseOksData>()((set) => ({
   data: [],
   setData: async () => {
     const data = await fetch(
-      `https://gisoks.ru/cms/items/projects?fields=*.*&${useOksFilter.getState().query}filter[status]=published`,
+      `https://gisoks.ru/cms/items/projects?fields=*.*&${
+        useOksFilter.getState().query
+      }filter[status]=published`,
       GET_OPTIONS
     )
       .then((res) => res.json())
@@ -30,6 +33,9 @@ const useOksData = create<IUseOksData>()((set) => ({
           useOksFilter.getState().addFilterGroup("project_name", programs);
           useOksFilter.getState().addFilterGroup("developer", developers);
           useOksFilter.getState().setFiltersConstructed(true);
+        }
+        if (res.data.length > 0) {
+          useOksPanel.getState().setPanelData({ panel: res.data[0] });
         }
 
         return res.data;

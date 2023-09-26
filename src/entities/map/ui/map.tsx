@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
-import polygons from "../../../polygons.json";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import polygons from "../../../assets/polygons.json";
+import water from "../../../assets/admin_level_4.json"
 import { Kozhuuns } from "./kozhuuns";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
@@ -28,8 +29,8 @@ const Map: FC = () => {
       className="map"
       center={[51.8, 94.15]}
       // maxBounds={[
-      //   [53, 100],
-      //   [49.4, 87],
+      //   [59, 100],
+      //   [47, 87],
       // ]}
       zoom={7}
       maxZoom={20}
@@ -38,6 +39,17 @@ const Map: FC = () => {
       doubleClickZoom={false}
       attributionControl={false}
     >
+      {
+        // @ts-ignore
+        JSON.parse(JSON.stringify(water.features as GeoJSON.FeatureCollection)).map((item: GeoJSON.Feature<GeoJSON.Polygon, any>) => {
+          return <GeoJSON data={item.geometry} style={{
+            weight: 1,
+            fillColor: "#CC6600",
+            color: "#CC6600",
+            className: "shadow-blue"
+          }} />
+        })
+      }
       <MarkerClusterGroup
         // onClick={(e: React.MouseEvent) => console.log('onClick', e)}
         iconCreateFunction={createClusterCustomIcon}
@@ -53,13 +65,15 @@ const Map: FC = () => {
         showCoverageOnHover={true}
       >
         <Kozhuuns features={JSON.parse(JSON.stringify(polygons.features))} />
+
       </MarkerClusterGroup>
 
-      <TileLayer
+      {/* <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        opacity={1}
-      />
+        opacity={0}
+        
+      /> */}
     </MapContainer>
   );
 };

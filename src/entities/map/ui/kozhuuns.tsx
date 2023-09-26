@@ -24,7 +24,6 @@ const Kozhuuns: FC<
 
   const eventHandlers: LeafletEventHandlerFnMap = {
     click: async function (e: LeafletMouseEvent) {
-      const { feature } = e.propagatedFrom;
       const { description: kozhuun, id: kozhuunId } =
         e.propagatedFrom.feature.geometry.properties;
 
@@ -32,11 +31,9 @@ const Kozhuuns: FC<
         setKozhuun(Number(kozhuunId));
         removeAllQueryParams();
         setQueryParams("region", kozhuun);
-        setSelectedValueOnFilter("region", kozhuun)
-        setData();
+        await setData();
+        setIsOpen(true);
       }
-
-      map.fitBounds(L.geoJson(feature).getBounds());
     },
   };
 
@@ -57,14 +54,17 @@ const Kozhuuns: FC<
               }}
               style={{
                 weight: 2,
-                color: "#000000",
-                fillColor: "#e78912"
+                color: "#FFFFFF",
+                fillColor: "#040436",
+                className: "shadow",
+                fillOpacity: 1,
               }}
+
               eventHandlers={eventHandlers}
             />
           );
       })}
-      {data?.map((element: any) => {
+      {/* {data?.map((element: any) => {
         if (Object(element?.location).hasOwnProperty("coordinates")) {
           return (
             <Marker
@@ -87,7 +87,7 @@ const Kozhuuns: FC<
             ></Marker>
           );
         }
-      })}
+      })} */}
     </>
   );
 };

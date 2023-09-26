@@ -19,7 +19,7 @@ const OksList: FC = () => {
       {data?.map((item, index) => {
         return (
           <Box
-            bgColor={"blue.500"}
+            bgColor={"#1f1f50"}
             color={"whiteAlpha.900"}
             borderRadius={8}
             p={4}
@@ -36,9 +36,9 @@ const OksList: FC = () => {
               textOverflow={"ellipsis"}
               lineHeight={"5"}
             >
-              {item.name}
+              {item?.name}
             </Heading>
-            <Text>{item.customer}</Text>
+            <Text>{item?.customer}</Text>
           </Box>
         );
       })}

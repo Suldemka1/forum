@@ -1,3 +1,46 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/Oswald/Oswald.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/Oswald/Oswald.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/Oswald/Oswald.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/Oswald/Oswald.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/Oswald/Oswald.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Oswald" !important;
+}
+
+.chakra-heading {
+  font-family: "Oswald" !important;
+}
+
 #root {
   text-align: center;
 }
@@ -7,9 +50,63 @@
   height: 100%;
 
   min-height: 100lvh;
+  background: rgb(2, 0, 36) !important;
+  background: linear-gradient(
+    35deg,
+    rgb(3, 2, 15) 0%,
+    rgb(8, 8, 28) 38%,
+    rgb(15, 26, 60) 100%
+  ) !important;
+  filter: drop-shadow(10px 10px 10px rgba(255, 255, 255, 1)) !important;
 }
 
-.custom-marker-cluster{
+.shadow {
+  filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 1)) !important;
+  
+  animation: pulse 1s infinite !important;
+}
+
+.shadow-blue {
+  filter: drop-shadow(4px 4px 4px rgb(60, 0, 255)) !important;
+  /* transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(47deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) !important; */
+  animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 1)) !important;
+  }
+  70% {
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 1)) !important;
+  }
+  100% {
+    -webkit-filter: drop-shadow(3px 3px 3px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(3px 3px 3px rgba(255, 255, 255, 1)) !important;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 1)) !important;
+  }
+  70% {
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 1)) !important;
+  }
+  100% {
+    -webkit-filter: drop-shadow(3px 3px 3px rgba(255, 255, 255, 1)) !important;
+    filter: drop-shadow(3px 3px 3px rgba(255, 255, 255, 1)) !important;
+  }
+}
+
+.shadow:hover {
+  fill: #1f1f50;
+}
+
+.custom-marker-cluster {
   background: #ffffff;
   border: 5px solid #f00800;
   border-radius: 50%;
@@ -33,4 +130,11 @@
 
 .construction-icon {
   content: url("../../../public/icons/location-marker.svg");
+}
+
+.marker-icon {
+  stroke: #1f1f50;
+  color: white;
+  fill: white;
+  filter: drop-shadow(1px 1px 1px rgb(245, 0, 0)) !important;
 }

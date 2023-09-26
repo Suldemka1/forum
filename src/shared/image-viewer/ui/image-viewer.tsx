@@ -13,16 +13,18 @@ const ImageViewer: FC<IImageViewer> = ({ images }) => {
   return (
     <>
       <Image src={`https://gisoks.ru/cms/assets/${selectedImage}`} h={500} fit={"cover"} />
-      <Box minH={200}>
+      <Box>
         <ChakraCarousel gap={32}>
           {images?.map((item: any) => (
-            <Box key={item}>
+            <Box key={item} w={"100%"}>
               <Image
                 draggable={false}
                 src={`https://gisoks.ru/cms/assets/${item?.directus_files_id}`}
+
+                w={"100%"}
                 maxH={200}
                 minH={200}
-                fit={"cover"}
+                fit={"fill"}
                 onClick={() => {
                   setSelectedImage(item?.directus_files_id);
                 }}
