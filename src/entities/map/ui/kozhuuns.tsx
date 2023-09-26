@@ -1,12 +1,10 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
 import { FC } from "react";
-import { GeoJSON, Marker, useMap } from "react-leaflet";
-import L from "leaflet";
+import { GeoJSON } from "react-leaflet";
 import { useKozhuun } from "../api/useKozhuun";
 import { useOksPanel } from "../../oks-item/api/useOksPanel";
 import { useOksFilter } from "../../oks-item/api/useOksFilter";
 import { useOksData } from "../../oks-item/api/useOksData";
-import { constructionIcon, repairIcon } from "../../../app/constants/marker";
 
 const Kozhuuns: FC<
   Pick<
@@ -14,11 +12,9 @@ const Kozhuuns: FC<
     "features"
   >
 > = ({ features }) => {
-  const map = useMap();
   const { id, setKozhuun } = useKozhuun((state) => state);
-  const { setPanelData } = useOksPanel();
-  const { setQueryParams, setSelectedValueOnFilter, removeAllQueryParams } = useOksFilter();
-  const { data, setData } = useOksData();
+  const { setQueryParams, removeAllQueryParams } = useOksFilter();
+  const { setData } = useOksData();
 
   const { setIsOpen } = useOksPanel();
 

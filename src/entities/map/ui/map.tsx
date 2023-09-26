@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { FC, useEffect } from "react";
+import { MapContainer, GeoJSON } from "react-leaflet";
 import polygons from "../../../assets/polygons.json";
 import water from "../../../assets/admin_level_4.json"
 import { Kozhuuns } from "./kozhuuns";
