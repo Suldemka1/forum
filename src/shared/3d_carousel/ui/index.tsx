@@ -1,6 +1,6 @@
-import React, { FC, useState, TouchEventHandler, useEffect, DragEventHandler } from "react";
+import React, { FC, useState, TouchEventHandler, useEffect} from "react";
 import Carousel from "react-spring-3d-carousel";
-import { IAppCarousel, ICarouselProps, ISlide, IState } from "../api/interface";
+import { IAppCarousel, ISlide } from "../api/interface";
 import { Box, Image } from "@chakra-ui/react";
 
 
@@ -13,8 +13,11 @@ const getTouches = (evt: React.TouchEvent<HTMLDivElement>) => {
 const AppCarousel: FC<IAppCarousel<any>> = ({ slides: data }) => {
 
   const [slides, setSlides] = useState<Array<ISlide>>([])
+  //@ts-ignore
   const [enableSwipe, setEnableSwipe] = useState<boolean>(true)
+  //@ts-ignore
   const [offsetRadius, setOffsetRadius] = useState<number>(2);
+  //@ts-ignore
   const [showArrows, setShowArrows] = useState<boolean>(false);
   const [goToSlide, setGoToSlide] = useState<number | undefined>(0)
   const [yDown, setYDown] = useState<number | undefined>(undefined)
@@ -34,15 +37,6 @@ const AppCarousel: FC<IAppCarousel<any>> = ({ slides: data }) => {
     }
   }, [data])
 
-  const [state, setState] = useState<IState>({
-    index: 0,
-    goToSlide: null,
-    enableSwipe: true,
-    prevPropsGoToSlide: 0,
-    newSlide: true,
-    xDown: 0,
-    yDown: 0
-  });
 
   const handleTouchStart: TouchEventHandler<HTMLDivElement> = (evt) => {
     if (enableSwipe) {

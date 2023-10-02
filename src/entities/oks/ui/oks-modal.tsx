@@ -11,13 +11,10 @@ import {
   Text,
   Image,
   Button,
-  Box
 } from "@chakra-ui/react"
-import { FC, TouchEventHandler, useEffect, useState } from "react"
+import { FC } from "react"
 import { IOksModalComponent } from "../api"
 import { Carousel } from "../../../shared/3d_carousel/ui/index"
-import { config } from "react-spring"
-import { ISlide } from "../../../shared/3d_carousel/api/interface"
 
 
 

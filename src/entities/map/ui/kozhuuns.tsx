@@ -2,7 +2,7 @@ import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
 import { FC } from "react";
 import { GeoJSON, Marker } from "react-leaflet";
 import { useKozhuun } from "../api/useKozhuun";
-import { useOksFilter, useOksFilterOpenState } from "../../oks/api/useOksFilter";
+import { useOksFilter} from "../../oks/api/useOksFilter";
 import { useOksData } from "../../oks/api/useOksData";
 import { useOksModal } from "../../oks/api";
 import { constructionIcon, repairIcon } from "../../../app/constants/marker";

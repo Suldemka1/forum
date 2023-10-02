@@ -3,17 +3,17 @@ import { MapContainer, GeoJSON } from "react-leaflet";
 import polygons from "../../../assets/polygons.json";
 import water from "../../../assets/admin_level_4.json"
 import { Kozhuuns } from "./kozhuuns";
-import L from "leaflet";
+// import L from "leaflet";
 import { useOksData } from "../../oks/api/useOksData";
 import { useOksFilter } from "../../oks/api/useOksFilter";
 
-const createClusterCustomIcon = function (cluster: any) {
-  return L.divIcon({
-    html: `<span>${cluster.getChildCount()}</span>`,
-    className: "custom-marker-cluster",
-    iconSize: L.point(33, 33, true),
-  });
-};
+// const createClusterCustomIcon = function (cluster: any) {
+//   return L.divIcon({
+//     html: `<span>${cluster.getChildCount()}</span>`,
+//     className: "custom-marker-cluster",
+//     iconSize: L.point(33, 33, true),
+//   });
+// };
 
 const Map: FC = () => {
   const { setData } = useOksData()

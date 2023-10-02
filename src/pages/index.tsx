@@ -1,4 +1,4 @@
-import { Box, DrawerBody, Heading, Stack } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { Map } from "../entities/map";
 import { OksDrawer } from "../entities/oks/ui/oks-drawer";
 import { Banner } from "../shared/banner";
