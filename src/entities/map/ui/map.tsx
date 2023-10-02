@@ -1,12 +1,11 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useId } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import polygons from "../../../assets/polygons.json";
 import water from "../../../assets/admin_level_4.json"
 import { Kozhuuns } from "./kozhuuns";
-import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
-import { useOksData } from "../../oks-item/api/useOksData";
-import { useOksFilter } from "../../oks-item/api/useOksFilter";
+import { useOksData } from "../../oks/api/useOksData";
+import { useOksFilter } from "../../oks/api/useOksFilter";
 
 const createClusterCustomIcon = function (cluster: any) {
   return L.divIcon({
@@ -19,6 +18,7 @@ const createClusterCustomIcon = function (cluster: any) {
 const Map: FC = () => {
   const { setData } = useOksData()
   const { query_params } = useOksFilter()
+  const id = useId()
 
   useEffect(() => {
     setData()
@@ -38,11 +38,12 @@ const Map: FC = () => {
       scrollWheelZoom={true}
       doubleClickZoom={false}
       attributionControl={false}
+      // dragging={false}
     >
       {
         // @ts-ignore
-        JSON.parse(JSON.stringify(water.features as GeoJSON.FeatureCollection)).map((item: GeoJSON.Feature<GeoJSON.Polygon, any>) => {
-          return <GeoJSON data={item.geometry} style={{
+        JSON.parse(JSON.stringify(water.features as GeoJSON.FeatureCollection)).map((item: GeoJSON.Feature<GeoJSON.Polygon, any>, index) => {
+          return <GeoJSON key={String(id).concat("" + String(index))} data={item.geometry} style={{
             weight: 1,
             fillColor: "#CC6600",
             color: "#CC6600",
@@ -50,11 +51,14 @@ const Map: FC = () => {
           }} />
         })
       }
-      <MarkerClusterGroup
-        // onClick={(e: React.MouseEvent) => console.log('onClick', e)}
+      {/* <MarkerClusterGroup
         iconCreateFunction={createClusterCustomIcon}
+        showCoverageOnHover={true}
+        spiderfyDistanceMultiplier={1}
         maxClusterRadius={40}
-        spiderfyOnMaxZoom={true}
+        spiderfyOnMaxZoom={false}
+        zoomToBoundsOnClick={false}
+
         polygonOptions={{
           fillColor: '#ffffff',
           color: '#f00800',
@@ -62,11 +66,10 @@ const Map: FC = () => {
           opacity: 1,
           fillOpacity: 0.8,
         }}
-        showCoverageOnHover={true}
-      >
+      > */}
         <Kozhuuns features={JSON.parse(JSON.stringify(polygons.features))} />
 
-      </MarkerClusterGroup>
+      {/* </MarkerClusterGroup> */}
 
       {/* <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -74,7 +77,7 @@ const Map: FC = () => {
         opacity={0}
         
       /> */}
-    </MapContainer>
+    </MapContainer >
   );
 };
 

@@ -16,7 +16,7 @@ import { CarouselTrack } from "./track";
 const ChakraCarousel: FC<any>
   = ({ children, gap }) => {
     const [trackIsActive, setTrackIsActive] = useState<boolean>(false);
-    const [multiplier, setMultiplier] = useState<number>(0.35);
+    const [multiplier, setMultiplier] = useState<number>(1);
     const [sliderWidth, setSliderWidth] = useState<number>(0);
     const [activeItem, setActiveItem] = useState<number>(0);
     const [constraint, setConstraint] = useState<number>(0);
@@ -50,12 +50,12 @@ const ChakraCarousel: FC<any>
       if (isBetweenMdAndXl) {
         setItemWidth(sliderWidth / 2 - gap);
         setMultiplier(0.5);
-        setConstraint(2);
+        setConstraint(1); // 2
       }
       if (isGreaterThanXL) {
-        setItemWidth(sliderWidth / 3 - gap);
-        setMultiplier(0.35);
-        setConstraint(3);
+        setItemWidth(sliderWidth / 1 - gap);
+        setMultiplier(0.5); // 35
+        setConstraint(1); //3
       }
     }, [isBetweenBaseAndMd, isBetweenMdAndXl, isGreaterThanXL, sliderWidth, gap]);
 

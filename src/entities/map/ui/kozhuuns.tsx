@@ -1,10 +1,12 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
 import { FC } from "react";
-import { GeoJSON } from "react-leaflet";
+import { GeoJSON, Marker } from "react-leaflet";
 import { useKozhuun } from "../api/useKozhuun";
-import { useOksPanel } from "../../oks-item/api/useOksPanel";
-import { useOksFilter } from "../../oks-item/api/useOksFilter";
-import { useOksData } from "../../oks-item/api/useOksData";
+import { useOksFilter, useOksFilterOpenState } from "../../oks/api/useOksFilter";
+import { useOksData } from "../../oks/api/useOksData";
+import { useOksModal } from "../../oks/api";
+import { constructionIcon, repairIcon } from "../../../app/constants/marker";
+
 
 const Kozhuuns: FC<
   Pick<
@@ -13,10 +15,9 @@ const Kozhuuns: FC<
   >
 > = ({ features }) => {
   const { id, setKozhuun } = useKozhuun((state) => state);
-  const { setQueryParams, removeAllQueryParams } = useOksFilter();
-  const { setData } = useOksData();
-
-  const { setIsOpen } = useOksPanel();
+  const { setQueryParams, removeAllQueryParams, setSelectedValueOnFilter } = useOksFilter();
+  const { setData, data } = useOksData();
+  const { setModalData, setIsModalOpen } = useOksModal()
 
   const eventHandlers: LeafletEventHandlerFnMap = {
     click: async function (e: LeafletMouseEvent) {
@@ -27,8 +28,8 @@ const Kozhuuns: FC<
         setKozhuun(Number(kozhuunId));
         removeAllQueryParams();
         setQueryParams("region", kozhuun);
+        setSelectedValueOnFilter("region", kozhuun)
         await setData();
-        setIsOpen(true);
       }
     },
   };
@@ -60,7 +61,7 @@ const Kozhuuns: FC<
             />
           );
       })}
-      {/* {data?.map((element: any) => {
+      {data?.map((element: any) => {
         if (Object(element?.location).hasOwnProperty("coordinates")) {
           return (
             <Marker
@@ -76,14 +77,14 @@ const Kozhuuns: FC<
               ]}
               eventHandlers={{
                 click: () => {
-                  setIsOpen(true);
-                  setPanelData({ panel: element });
+                  setModalData(element);
+                  setIsModalOpen(true)
                 },
               }}
             ></Marker>
           );
         }
-      })} */}
+      })}
     </>
   );
 };

@@ -138,3 +138,16 @@ body {
   fill: white;
   filter: drop-shadow(1px 1px 1px rgb(245, 0, 0)) !important;
 }
+
+.oks-card-transition {
+  animation: up 2s ease-in-out !important;
+}
+
+@keyframes up {
+  0% {
+    opacity: .1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
