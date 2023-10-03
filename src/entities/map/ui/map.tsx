@@ -5,17 +5,15 @@ import water from "@/assets/admin_level_4.json"
 import { Kozhuuns } from "./kozhuuns";
 import { useOksData } from "../../oks/api/useOksData";
 import { useOksFilter } from "@/features/oks-filter/api";
-import { Box } from "@chakra-ui/react";
 import { TDataStatus } from "@/features/oks-list/api/interface";
 import { OksMapMarkers } from "@/features/oks-markers/ui";
 import { useMapZoomControl } from "@/shared/map-zoom_control";
-import { Banner } from "@/shared/banner";
-import { MapZoomControl } from "@/shared/map-zoom_control";
 import { MapApiController } from "./map_api_controller";
 
 const Map: FC = () => {
   const { zoom } = useMapZoomControl()
   const { data: oksData } = useOksData()
+  // @ts-ignore
   const [dataVariant, setDataVariant] = useState<TDataStatus>("empty")
 
   useEffect(() => {

@@ -13,7 +13,7 @@ const OksFilter: FC<IOksFilterComponent> = () => {
         <Heading color={"white"} fontSize={24}>Поиск по параметрам</Heading>
 
         {
-          filters.map((item, index, arr) => {
+          filters.map((item, index) => {
             return (
               <Select
                 key={`${id}-${index}-${item.filter_name}`}

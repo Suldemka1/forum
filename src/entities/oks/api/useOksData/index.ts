@@ -45,7 +45,7 @@ const useOksData = create<IUseOksData>()((set) => ({
 
         return res.data;
       })
-      .catch((e) => {
+      .catch(() => {
         return [];
       });
 

@@ -1,8 +1,7 @@
 import { Box, Heading, Stack } from "@chakra-ui/react";
-import { FC, useEffect, useId } from "react";
+import { FC, useId } from "react";
 import { useOksFilter } from "../../oks-filter";
 import kozhuuns from "@/assets/polygons.json"
-import L from "leaflet"
 
 const OksListEmpty: FC = () => {
   const { filters, setQueryParams, removeQueryParamByName, removeAllQueryParams, setSelectedValueOnFilter } = useOksFilter()

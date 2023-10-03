@@ -4,11 +4,12 @@ import { OksFilter, OksList, TDataStatus, useOksModal } from "@/features";
 import { OksModal } from "@/features/index"
 import { MinistryBanner } from "@/shared";
 import { MapZoomControl } from "@/shared/map-zoom_control";
-import { As, Box, BoxProps, HTMLChakraComponents, HTMLChakraProps } from "@chakra-ui/react";
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import { Box } from "@chakra-ui/react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { Banner } from "@/shared/banner";
 
 const Home = () => {
+  // @ts-ignore
   const [isBottomMax, setIsBottomMax] = useState<boolean>(true)
   const { isModalOpen, setIsModalOpen, data: modalData } = useOksModal()
 

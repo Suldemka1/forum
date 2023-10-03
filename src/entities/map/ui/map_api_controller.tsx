@@ -8,13 +8,13 @@ import kozhuuns from "@/assets/polygons.json"
 const MapApiController: FC = () => {
   const map = useMap()
   const { zoom, setZoom } = useMapZoomControl()
-  const { filters, removeAllQueryParams, setQueryParams, setSelectedValueOnFilter } = useOksFilter()
-
+  const { filters } = useOksFilter()
+  // @ts-ignore
   const mapEvents = useMapEvents({
-    zoom: (e) => {
+    zoom: () => {
       setZoom(map.getZoom())
     },
-    click: (e) => {
+    click: () => {
 
     }
   })
@@ -29,13 +29,13 @@ const MapApiController: FC = () => {
     if (kozhuun)
       map.fitBounds(L.geoJson(kozhuun.geometry).getBounds())
 
-    }, [filters])
+  }, [filters])
 
-    useEffect(() => {
-      map.setZoom(zoom)
-    }, [zoom])
+  useEffect(() => {
+    map.setZoom(zoom)
+  }, [zoom])
 
-    return null
-  }
+  return null
+}
 
 export { MapApiController }
