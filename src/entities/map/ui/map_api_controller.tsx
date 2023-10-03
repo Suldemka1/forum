@@ -4,11 +4,9 @@ import { useMapZoomControl } from "@/shared/map-zoom_control"
 import { useOksFilter } from "@/features"
 import L from "leaflet"
 import kozhuuns from "@/assets/polygons.json"
-import { useOksData } from "@/entities/oks"
 
 const MapApiController: FC = () => {
   const map = useMap()
-  const { setData } = useOksData()
   const { zoom, setZoom } = useMapZoomControl()
   const { filters } = useOksFilter()
   // @ts-ignore

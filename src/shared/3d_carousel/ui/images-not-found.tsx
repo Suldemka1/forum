@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Input, useToast, Image } from "@chakra-ui/react";
+import { Box, Button, Heading, Input, useToast } from "@chakra-ui/react";
 import { FC } from "react";
 
 const EmptyImageData: FC = () => {
