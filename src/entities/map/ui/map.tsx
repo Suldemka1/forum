@@ -42,8 +42,8 @@ const Map: FC = () => {
         [48, 87],
       ]}
       zoom={zoom}
-      maxZoom={20}
-      minZoom={5}
+      maxZoom={maxZoom}
+      minZoom={minZoom}
       scrollWheelZoom={true}
       doubleClickZoom={false}
       attributionControl={false}
