@@ -1,1 +1,1 @@
-export type { IOksCardComponent, IOksItem } from "./interface";
+export type { IOksCardComponent } from "./interface";

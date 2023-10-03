@@ -1,10 +1,10 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import Map from "../../pages"
+import Main from "../../pages"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Map />} />
+      <Route path="/" element={<Main />} />
     </Route>
   )
 )

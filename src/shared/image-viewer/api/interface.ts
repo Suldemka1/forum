@@ -1,3 +1,5 @@
+import { IDirectusImage } from "@/entities/directus";
+
 export interface IImageViewer {
-  images: Array<any>
+  images: Array<IDirectusImage>;
 }

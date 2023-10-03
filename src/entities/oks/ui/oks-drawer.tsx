@@ -7,10 +7,8 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { FC, useEffect } from "react";
-import { OksFilter } from "./oks-filter";
-import { OksList } from ".";
+import { OksFilter, OksList, useOksFilterOpenState } from "@/features";
 import { useOksData } from "../api/useOksData";
-import { useOksFilterOpenState } from "../api";
 
 const OksDrawer: FC = () => {
   const { isOpen, setIsOpen } = useOksFilterOpenState();

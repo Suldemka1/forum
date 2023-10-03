@@ -1,12 +1,10 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
-import { FC } from "react";
-import { GeoJSON, Marker } from "react-leaflet";
+import { FC, useId } from "react";
+import { GeoJSON, useMap } from "react-leaflet";
 import { useKozhuun } from "../api/useKozhuun";
-import { useOksFilter} from "../../oks/api/useOksFilter";
+import { useOksFilter } from "@/features/oks-filter/api";
 import { useOksData } from "../../oks/api/useOksData";
-import { useOksModal } from "../../oks/api";
-import { constructionIcon, repairIcon } from "../../../app/constants/marker";
-
+import L from "leaflet"
 
 const Kozhuuns: FC<
   Pick<
@@ -14,21 +12,25 @@ const Kozhuuns: FC<
     "features"
   >
 > = ({ features }) => {
+  const map = useMap()
+  const generatedId = useId()
   const { id, setKozhuun } = useKozhuun((state) => state);
   const { setQueryParams, removeAllQueryParams, setSelectedValueOnFilter } = useOksFilter();
-  const { setData, data } = useOksData();
-  const { setModalData, setIsModalOpen } = useOksModal()
+  const { setData } = useOksData();
 
   const eventHandlers: LeafletEventHandlerFnMap = {
     click: async function (e: LeafletMouseEvent) {
       const { description: kozhuun, id: kozhuunId } =
         e.propagatedFrom.feature.geometry.properties;
 
+      map.fitBounds(L.geoJson(e.propagatedFrom.feature).getBounds())
+      removeAllQueryParams();
+      setSelectedValueOnFilter("region", kozhuun)
+      setQueryParams("region", kozhuun);
+
       if (e.propagatedFrom.feature.geometry.properties.id != id) {
         setKozhuun(Number(kozhuunId));
-        removeAllQueryParams();
-        setQueryParams("region", kozhuun);
-        setSelectedValueOnFilter("region", kozhuun)
+        
         await setData();
       }
     },
@@ -37,13 +39,13 @@ const Kozhuuns: FC<
   return (
     <>
       {features?.map(function (
-        item: GeoJSON.Feature<GeoJSON.Polygon, any>,
-        index
+        item: GeoJSON.Feature<GeoJSON.Polygon, GeoJSON.GeoJsonProperties>,
+        index: number
       ) {
         if (Object(item.properties).hasOwnProperty("description"))
           return (
             <GeoJSON
-              key={index}
+              key={`${generatedId}__${index}`}
               data={item.geometry as GeoJSON.Polygon}
               onEachFeature={(feature) => {
                 feature.properties = { ...item.properties };
@@ -60,30 +62,6 @@ const Kozhuuns: FC<
               eventHandlers={eventHandlers}
             />
           );
-      })}
-      {data?.map((element: any) => {
-        if (Object(element?.location).hasOwnProperty("coordinates")) {
-          return (
-            <Marker
-              key={element?.id}
-              icon={
-                element?.type === "Строительство"
-                  ? constructionIcon
-                  : repairIcon
-              }
-              position={[
-                element?.location?.coordinates[1],
-                element?.location?.coordinates[0],
-              ]}
-              eventHandlers={{
-                click: () => {
-                  setModalData(element);
-                  setIsModalOpen(true)
-                },
-              }}
-            ></Marker>
-          );
-        }
       })}
     </>
   );

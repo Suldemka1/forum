@@ -1,2 +1,2 @@
 export type { IImageViewer } from "./api/interface";
-export { ImageViewer } from "./ui/image-viewer";
+// export { ImageViewer } from "./ui/image-viewer";

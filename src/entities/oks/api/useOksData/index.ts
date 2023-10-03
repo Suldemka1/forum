@@ -1,8 +1,9 @@
 import { create } from "zustand";
-import { IOksItem, IUseOksData } from "./interface";
-import { useOksFilter } from "../useOksFilter";
-import { GET_OPTIONS } from "../../../../app/constants/http";
-import { FILTER_OPTIONS } from "../../../../app/constants/filter";
+import { IUseOksData } from "./interface";
+import { useOksFilter } from "@/features/oks-filter/api";
+import { GET_OPTIONS } from "@/app/constants/http";
+import { FILTER_OPTIONS } from "@/app/constants/filter";
+import { IOksObject } from "../interface";
 
 const useOksData = create<IUseOksData>()((set) => ({
   data: [],
@@ -14,7 +15,7 @@ const useOksData = create<IUseOksData>()((set) => ({
       GET_OPTIONS
     )
       .then((res) => res.json())
-      .then((res: { data: Array<IOksItem> }) => {
+      .then((res: { data: Array<IOksObject> }) => {
         const filters: Array<{ name: string; values: Set<string> }> = [];
 
         FILTER_OPTIONS.forEach((item) => {
@@ -24,17 +25,16 @@ const useOksData = create<IUseOksData>()((set) => ({
           });
         });
 
-        res.data?.forEach((item: IOksItem) => {
+        res.data?.forEach((item: IOksObject) => {
           for (let i = 0; i < filters.length; i++) {
             const value = filters[i].name;
 
-            filters[i]?.values.add(item[value as keyof IOksItem] as string);
+            filters[i]?.values.add(item[value as keyof IOksObject] as string);
           }
         });
 
         if (!useOksFilter.getState().isFiltersConstructed) {
           for (let i = 0; i < filters.length; i++) {
-            console.log(filters[i].name)
             useOksFilter
               .getState()
               .addFilterGroup(filters[i].name, filters[i].values);
@@ -46,7 +46,6 @@ const useOksData = create<IUseOksData>()((set) => ({
         return res.data;
       })
       .catch((e) => {
-        console.log(e);
         return [];
       });
 

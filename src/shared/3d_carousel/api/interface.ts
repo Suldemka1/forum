@@ -36,6 +36,14 @@ export interface ICarouselProps {
   offsetFn?: OffsetFn;
 }
 
+export type TAppCarouselDataStatus = "filled" | "empty";
+
+export interface IAppCarouselComponent {
+  data_status: TAppCarouselDataStatus;
+}
+
 export interface IAppCarousel<T> {
   slides: Array<T>;
+  offsetRadius?: number;
+  enableSwipe?: boolean;
 }
