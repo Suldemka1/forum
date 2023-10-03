@@ -40,10 +40,6 @@ const OksListEmpty: FC = () => {
             onClick={() => {
               removeAllQueryParams()
               removeQueryParamByName("region")
-             
-              // map.flyTo([51.8, 94.15])
-              // map.setView([51.8, 94.15])
-              // map.setZoom(7)
             }}
           >
             Все

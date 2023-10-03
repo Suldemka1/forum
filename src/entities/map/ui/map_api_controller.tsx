@@ -4,9 +4,11 @@ import { useMapZoomControl } from "@/shared/map-zoom_control"
 import { useOksFilter } from "@/features"
 import L from "leaflet"
 import kozhuuns from "@/assets/polygons.json"
+import { useOksData } from "@/entities/oks"
 
 const MapApiController: FC = () => {
   const map = useMap()
+  const { setData } = useOksData()
   const { zoom, setZoom } = useMapZoomControl()
   const { filters } = useOksFilter()
   // @ts-ignore
@@ -26,9 +28,15 @@ const MapApiController: FC = () => {
           return kozhuun.properties.description === filters[0]?.selectedValue
         }
       })
-    if (kozhuun)
+    if (kozhuun) {
       map.fitBounds(L.geoJson(kozhuun.geometry).getBounds())
-
+    }
+    else {
+      
+      map.flyTo([51.8, 94.15])
+      map.setView([51.8, 94.15])
+      map.setZoom(7)
+    }
   }, [filters])
 
   useEffect(() => {

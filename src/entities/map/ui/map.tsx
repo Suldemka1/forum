@@ -11,7 +11,7 @@ import { useMapZoomControl } from "@/shared/map-zoom_control";
 import { MapApiController } from "./map_api_controller";
 
 const Map: FC = () => {
-  const { zoom } = useMapZoomControl()
+  const { zoom, minZoom, maxZoom } = useMapZoomControl()
   const { data: oksData } = useOksData()
   // @ts-ignore
   const [dataVariant, setDataVariant] = useState<TDataStatus>("empty")
