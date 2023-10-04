@@ -25,25 +25,33 @@ const AppCarousel: FC = () => {
 
   const leftSwipe = () =>
     setGoToSlide((prev) => {
-      if (prev) {
+      if (data?.images && data.images.length > 1) {
+        if (prev) {
         return prev - 1;
       } else {
         if (slides.slice(-1)[0].key) {
-          return slides.slice(-1)[0].key;
+          return slides.slice(-1)[0]?.key;
         }
-        return slides.slice(-1)[0].key;
       }
+      }
+      
+      return 0
     });
 
   const rightSwipe = () =>
     setGoToSlide((prev) => {
-      if (prev) {
+      if (data?.images && data.images.length > 1) {
+        if (prev) {
         return prev + 1;
       } else {
         if (slides[1].key) {
           return slides[1]?.key;
         }
       }
+      }
+      
+
+      return 0
     });
 
   const handleTouchStart: TouchEventHandler<HTMLDivElement> = (tvt) => {
@@ -104,16 +112,15 @@ const AppCarousel: FC = () => {
   };
 
   useEffect(() => {
-    console.log(data);
     if (data && data.images) {
       setSlides(
-        data.images.map((item: IDirectusImage, index: number) => {
+        data.images?.map((item: IDirectusImage, index: number) => {
           return {
             key: index,
             content: (
               <Image
                 h={500}
-                src={`https://gisoks.ru/cms/assets/${item.directus_files_id}`}
+                src={`/cms/assets/${item.directus_files_id}`}
                 fit={"contain"}
                 _focus={{
                   border: "none",
@@ -139,12 +146,17 @@ const AppCarousel: FC = () => {
       onKeyDown={handleKeyDown}
       outline={"none"}
     >
-      <SpringCarousel
-        slides={slides}
-        showNavigation={false}
-        offsetRadius={offsetRadius}
-        goToSlide={goToSlide}
-      />
+      {
+        slides.length === 1 && data?.images && <Image src={`/cms/assets/${data?.images[0]?.directus_files_id}`} />
+        }
+      {
+        slides.length > 1 && <SpringCarousel
+          slides={slides}
+          showNavigation={false}
+          offsetRadius={offsetRadius}
+          goToSlide={goToSlide}
+        />
+      }
     </Box>
   );
 };
