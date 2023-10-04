@@ -1,6 +1,8 @@
 import { FC, useId } from "react";
 import { GeoJSON } from "react-leaflet";
-import water from '@/assets/admin_level_4.json'
+//@ts-ignore
+const water = await import(`@/assets/${admin_level}.json`)
+// import water from '@/assets/admin_level_4.json'
 
 const RussianDistructs: FC = () => {
   const id = useId()
