@@ -5,9 +5,7 @@ import { useKozhuun } from "@/entities/map/api/useKozhuun";
 import { useOksFilter } from "@/features";
 import { useOksData } from "@/entities";
 import L from "leaflet"
-//@ts-ignore
-const kozhuuns = await import(`@/assets/${polygons}.json`)
-// import kozhuuns from "@/assets/polygons.json"
+import kozhuuns from "@/assets/polygons.json"
 
 const TuvanKozhuuns: FC = () => {
   const map = useMap()
