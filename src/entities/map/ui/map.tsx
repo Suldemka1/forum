@@ -21,7 +21,7 @@ const Map: FC = () => {
       className="map"
       center={[51.8, 94.15]}
       maxBounds={[
-        [59, 100],
+        [55, 100],
         [48, 87],
       ]}
       zoom={zoom}
