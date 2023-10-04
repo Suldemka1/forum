@@ -1,4 +1,4 @@
-import { Box, Heading, Select, Stack } from "@chakra-ui/react";
+import { Box, Select, Stack } from "@chakra-ui/react";
 import { useOksFilter } from "../api";
 import { FC, useId } from "react";
 import { IOksFilterComponent } from "../api/interface";

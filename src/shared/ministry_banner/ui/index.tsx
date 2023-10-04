@@ -7,7 +7,7 @@ const MinistryBanner: FC = () => {
     <Banner zIndex={600} placement="top-left" w={"lg"} >
       <Stack direction={"row"} alignItems={"center"}>
         <Image src="/coat.svg" height={59} />
-        <Heading color={"white"} textAlign={"left"} fontSize={24}>
+        <Heading color={"white"} textAlign={"left"} fontSize={30}>
           <p>Министерство строительства <br /> Республики Тыва</p>
         </Heading>
       </Stack>

@@ -1,5 +1,5 @@
 import { GreetingsBanner } from "./banner";
-import { GreetingsControl } from "./open-button";
+// import { GreetingsControl } from "./open-button";
 
 const Greetings = () => {
   return (

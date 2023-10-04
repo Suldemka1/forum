@@ -1,9 +1,6 @@
-import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Heading, Icon, Stack, Image } from "@chakra-ui/react"
+import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Heading } from "@chakra-ui/react"
 import { FC } from "react"
 import { useMapZoomControl } from ".."
-import { Greetings } from "@/shared/greetings"
-import { GreetingsControl } from "@/shared/greetings/ui/open-button"
-import { InfoIcon } from "@chakra-ui/icons"
 
 const MapZoomControl: FC = () => {
   const { zoom, setZoom } = useMapZoomControl()
