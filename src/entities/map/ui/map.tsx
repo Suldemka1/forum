@@ -1,33 +1,16 @@
-import { FC, useEffect, useId, useState } from "react";
-import { MapContainer, GeoJSON } from "react-leaflet";
-import polygons from "@/assets/polygons.json";
-import water from "@/assets/admin_level_4.json"
-import { Kozhuuns } from "./kozhuuns";
+import { FC, useEffect } from "react";
+import { MapContainer } from "react-leaflet";
+import { RussianDistructs, TuvanKozhuuns } from "@/features";
 import { useOksData } from "../../oks/api/useOksData";
-import { useOksFilter } from "@/features/oks-filter/api";
-import { TDataStatus } from "@/features/oks-list/api/interface";
-import { OksMapMarkers } from "@/features/oks-markers/ui";
-import { useMapZoomControl } from "@/shared/map-zoom_control";
+import { useOksFilter, OksMapMarkers } from "@/features";
+import { useMapZoomControl } from "@/shared";
 import { MapApiController } from "./map_api_controller";
 
 const Map: FC = () => {
   const { zoom, minZoom, maxZoom } = useMapZoomControl()
-  const { data: oksData } = useOksData()
-  // @ts-ignore
-  const [dataVariant, setDataVariant] = useState<TDataStatus>("empty")
-
-  useEffect(() => {
-    if (oksData.length > 0) {
-      setDataVariant("filled")
-    }
-    if (oksData.length === 0) {
-      setDataVariant("empty")
-    }
-  }, [oksData])
 
   const { setData } = useOksData()
   const { query_params } = useOksFilter()
-  const id = useId()
 
   useEffect(() => {
     setData()
@@ -50,20 +33,12 @@ const Map: FC = () => {
       zoomControl={false}
 
     >
-      {
-        (water as GeoJSON.FeatureCollection).features.map((feature, index: number) => {
-          return <GeoJSON key={String(id).concat("" + String(index))} data={feature.geometry} style={{
-            weight: 1,
-            fillColor: "#CC6600",
-            color: "#CC6600",
-            className: "shadow-blue"
-          }} ></GeoJSON>
-        })
-      }
+      <RussianDistructs />
+      
 
-      <OksMapMarkers />
+      <TuvanKozhuuns />
+<OksMapMarkers />
 
-      <Kozhuuns features={JSON.parse(JSON.stringify(polygons.features))} />
       <MapApiController />
     </MapContainer >
   );

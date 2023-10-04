@@ -2,8 +2,8 @@ import { FC, useState, TouchEventHandler, useEffect, WheelEventHandler, Keyboard
 import { ISlide } from "../api/interface";
 import { Box, Image } from "@chakra-ui/react";
 import SpringCarousel from "react-spring-3d-carousel";
-import { useOksModal } from "@/features/oks-modal";
-import { IDirectusImage } from "@/entities/directus";
+import { useOksModal } from "@/features";
+import { IDirectusImage } from "@/entities";
 
 const AppCarousel: FC = () => {
   const enableSwipe = true

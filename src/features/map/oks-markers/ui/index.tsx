@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useOksModal } from "@/features";
-import { IOksObject, useOksData } from "@/entities/oks/api";
+import { IOksObject, useOksData } from "@/entities";
 import { Marker } from "react-leaflet";
 import { constructionIcon, createClusterCustomIcon, repairIcon } from "@/app/constants/marker";
 import MarkerClusterGroup from "react-leaflet-cluster"

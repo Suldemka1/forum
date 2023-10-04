@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react"
 import { FC, useEffect, useState } from "react"
 import { IOksModalComponent } from "../api/interface"
-import { Carousel } from "@/shared/3d_carousel/ui/index"
-import { TAppCarouselDataStatus } from "@/shared/3d_carousel"
+import { AppCarousel, TAppCarouselDataStatus } from "@/shared"
 
 const OksModal: FC<IOksModalComponent> = ({ data, isOpen, onClose }) => {
 
@@ -57,7 +56,7 @@ const OksModal: FC<IOksModalComponent> = ({ data, isOpen, onClose }) => {
         </ModalHeader>
         <ModalBody display={"flex"} flexDirection={"column"} gap={5} bg={"transparent"} p={0}>
 
-          <Carousel
+          <AppCarousel
             data_status={isImagesPassed ? "filled" as TAppCarouselDataStatus : "empty" as TAppCarouselDataStatus}
           />
 

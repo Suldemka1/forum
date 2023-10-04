@@ -5,7 +5,7 @@ const Greetings = () => {
   return (
     <>
       <GreetingsBanner />
-      <GreetingsControl />
+      {/* <GreetingsControl /> */}
     </>
   );
 };

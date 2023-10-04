@@ -9,7 +9,7 @@ const GreetingsControl: FC = () => {
 
   return (
     <Avatar
-      position={"absolute"}
+      // position={"absolute"}
       onClick={setGreetingsOpen}
       className="greetings-control"
       // margin={[10, 5, 5, 5]}

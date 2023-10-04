@@ -1,8 +1,7 @@
 import { Stack } from "@chakra-ui/react";
 import { FC, useEffect, useId } from "react";
-import { useOksData } from "@/entities/oks/api";
+import { useOksData, OksCard } from "@/entities";
 import { useOksModal } from "@/features";
-import { OksCard } from "@/entities/oks/ui/card";
 
 const oksCards = document.querySelectorAll(".oks-card")
 const obj = new IntersectionObserver((entries) => {
@@ -22,7 +21,7 @@ const OksListFilled: FC = () => {
 
   const { data } = useOksData();
   const { setIsModalOpen, setModalData } = useOksModal()
-  
+
   const id = useId();
 
   useEffect(() => {

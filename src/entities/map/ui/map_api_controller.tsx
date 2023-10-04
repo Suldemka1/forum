@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react"
 import { useMap, useMapEvents } from "react-leaflet"
-import { useMapZoomControl } from "@/shared/map-zoom_control"
+import { useMapZoomControl } from "@/shared"
 import { useOksFilter } from "@/features"
 import L from "leaflet"
 import kozhuuns from "@/assets/polygons.json"
@@ -9,8 +9,7 @@ const MapApiController: FC = () => {
   const map = useMap()
   const { zoom, setZoom } = useMapZoomControl()
   const { filters } = useOksFilter()
-  // @ts-ignore
-  const mapEvents = useMapEvents({
+  useMapEvents({
     zoom: () => {
       setZoom(map.getZoom())
     },

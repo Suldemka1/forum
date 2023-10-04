@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { IUseOksData } from "./interface";
-import { useOksFilter } from "@/features/oks-filter/api";
+import { useOksFilter } from "@/features";
 import { GET_OPTIONS } from "@/app/constants/http";
 import { FILTER_OPTIONS } from "@/app/constants/filter";
 import { IOksObject } from "../interface";

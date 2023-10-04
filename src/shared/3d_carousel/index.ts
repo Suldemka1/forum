@@ -1,2 +1,2 @@
-export * from "./api/interface";
-export { Carousel } from "./ui/index";
+export * from "./api";
+export * from "./ui";

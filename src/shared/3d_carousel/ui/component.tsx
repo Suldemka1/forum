@@ -17,4 +17,4 @@ const AppCarousel: FC<IAppCarouselComponent> = ({ data_status }) => {
   )
 }
 
-export { AppCarousel as Carousel }
+export { AppCarousel }

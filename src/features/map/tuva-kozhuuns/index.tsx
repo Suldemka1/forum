@@ -1,17 +1,13 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
 import { FC, useId } from "react";
 import { GeoJSON, useMap } from "react-leaflet";
-import { useKozhuun } from "../api/useKozhuun";
-import { useOksFilter } from "@/features/oks-filter/api";
-import { useOksData } from "../../oks/api/useOksData";
+import { useKozhuun } from "@/entities/map/api/useKozhuun";
+import { useOksFilter } from "@/features";
+import { useOksData } from "@/entities";
 import L from "leaflet"
+import kozhuuns from "@/assets/polygons.json"
 
-const Kozhuuns: FC<
-  Pick<
-    GeoJSON.FeatureCollection<GeoJSON.Polygon, GeoJSON.GeoJsonProperties>,
-    "features"
-  >
-> = ({ features }) => {
+const TuvanKozhuuns: FC = () => {
   const map = useMap()
   const generatedId = useId()
   const { id, setKozhuun } = useKozhuun((state) => state);
@@ -30,7 +26,7 @@ const Kozhuuns: FC<
 
       if (e.propagatedFrom.feature.geometry.properties.id != id) {
         setKozhuun(Number(kozhuunId));
-        
+
         await setData();
       }
     },
@@ -38,23 +34,23 @@ const Kozhuuns: FC<
 
   return (
     <>
-      {features?.map(function (
-        item: GeoJSON.Feature<GeoJSON.Polygon, GeoJSON.GeoJsonProperties>,
+      {(kozhuuns as GeoJSON.FeatureCollection).features?.map((
+        kozhuun,
         index: number
-      ) {
-        if (Object(item.properties).hasOwnProperty("description"))
+      ) => {
+        if (Object(kozhuun.properties).hasOwnProperty("description"))
           return (
             <GeoJSON
               key={`${generatedId}__${index}`}
-              data={item.geometry as GeoJSON.Polygon}
+              data={kozhuun.geometry as GeoJSON.Polygon}
               onEachFeature={(feature) => {
-                feature.properties = { ...item.properties };
-                feature.properties.id = item.id;
+                feature.properties = { ...kozhuun.properties };
+                feature.properties.id = kozhuun.id;
               }}
               style={{
                 weight: 2,
-                color: "#FFFFFF",
-                fillColor: "#040436",
+                color: "#fff",
+                fillColor: "#060029",
                 className: "shadow",
                 fillOpacity: 1,
               }}
@@ -67,4 +63,4 @@ const Kozhuuns: FC<
   );
 };
 
-export { Kozhuuns };
+export { TuvanKozhuuns };

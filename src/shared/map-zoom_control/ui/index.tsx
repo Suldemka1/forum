@@ -1,17 +1,27 @@
-import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Heading } from "@chakra-ui/react"
+import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Heading, Icon, Stack, Image } from "@chakra-ui/react"
 import { FC } from "react"
 import { useMapZoomControl } from ".."
+import { Greetings } from "@/shared/greetings"
+import { GreetingsControl } from "@/shared/greetings/ui/open-button"
+import { InfoIcon } from "@chakra-ui/icons"
 
 const MapZoomControl: FC = () => {
   const { zoom, setZoom } = useMapZoomControl()
   return (
-    <Box w={"full"} display={"flex"} justifyContent={"center"}>
+    <Box w={"full"} display={"flex"} justifyContent={"space-between"}>
+      <Box w={"md"} zIndex={600}>
+        <Stack w={"full"} direction={"row"}>
+          <Greetings />
+          <Image src="/boss.png" h={50} />
+        </Stack>
+        <GreetingsControl />
+      </Box>
       <Box w={"md"}>
         <Slider>
           <label htmlFor="map-zoom-slider" style={{
             userSelect: "none"
           }}>
-            <Heading color={"white"} fontSize={20}>Масштаб карты</Heading></label>
+            <Heading color={"white"} fontSize={20}>масштаб карты</Heading></label>
           <Slider id="map-zoom-slider" defaultValue={zoom} max={20} min={5} step={1} value={zoom} onChange={(e) => {
             setZoom(e)
           }}>
@@ -22,6 +32,7 @@ const MapZoomControl: FC = () => {
           </Slider>
         </Slider>
       </Box>
+      <Box></Box>
     </Box>
 
   )

@@ -1,6 +1,6 @@
-import { FC } from "react"
-import { Heading, Image, Stack } from "@chakra-ui/react"
-import { Banner } from "@/shared/banner"
+import { FC } from "react";
+import { Heading, Image, Stack } from "@chakra-ui/react";
+import { Banner } from "@/shared";
 
 const MinistryBanner: FC = () => {
   return (

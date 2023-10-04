@@ -1,4 +1,4 @@
-import { IOksObject } from "@/entities/oks/api/interface";
+import { IOksObject } from "@/entities";
 
 export interface IUseOksModal {
   isModalOpen: boolean;
