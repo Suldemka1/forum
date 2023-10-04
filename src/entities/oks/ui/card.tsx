@@ -17,7 +17,7 @@ const OksCard: FC<IOksCardComponent> = ({ ...props }) => {
     >
       <Heading
         as={"p"}
-        fontSize={20}
+        fontSize={12}
         textOverflow={"ellipsis"}
         lineHeight={"5"}
       >

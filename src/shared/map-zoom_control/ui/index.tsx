@@ -9,12 +9,8 @@ const MapZoomControl: FC = () => {
   const { zoom, setZoom } = useMapZoomControl()
   return (
     <Box w={"full"} display={"flex"} justifyContent={"space-between"}>
-      <Box w={"md"} zIndex={600}>
-        <Stack w={"full"} direction={"row"}>
-          <Greetings />
-          <Image src="/boss.png" h={50} />
-        </Stack>
-        <GreetingsControl />
+      <Box zIndex={600}>
+        {/* <GreetingsControl /> */}
       </Box>
       <Box w={"md"}>
         <Slider>

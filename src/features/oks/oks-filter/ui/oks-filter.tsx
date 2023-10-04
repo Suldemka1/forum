@@ -10,7 +10,7 @@ const OksFilter: FC<IOksFilterComponent> = () => {
   return (
     <Box bg={"#040436"} p={5}>
       <Stack direction={"column"} gap={5}>
-        <Heading color={"white"} fontSize={24}>Поиск по параметрам</Heading>
+        {/* <Heading color={"white"} fontSize={24}>Поиск по параметрам</Heading> */}
 
         {
           filters.map((item, index) => {
