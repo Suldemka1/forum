@@ -27,14 +27,14 @@ const AppCarousel: FC = () => {
     setGoToSlide((prev) => {
       if (data?.images && data.images.length > 1) {
         if (prev) {
-        return prev - 1;
-      } else {
-        if (slides.slice(-1)[0].key) {
-          return slides.slice(-1)[0]?.key;
+          return prev - 1;
+        } else {
+          if (slides.slice(-1)[0].key) {
+            return slides.slice(-1)[0]?.key;
+          }
         }
       }
-      }
-      
+
       return 0
     });
 
@@ -42,14 +42,14 @@ const AppCarousel: FC = () => {
     setGoToSlide((prev) => {
       if (data?.images && data.images.length > 1) {
         if (prev) {
-        return prev + 1;
-      } else {
-        if (slides[1].key) {
-          return slides[1]?.key;
+          return prev + 1;
+        } else {
+          if (slides[1].key) {
+            return slides[1]?.key;
+          }
         }
       }
-      }
-      
+
 
       return 0
     });
@@ -118,19 +118,22 @@ const AppCarousel: FC = () => {
           return {
             key: index,
             content: (
-              <Image
-                h={500}
-                src={`/cms/assets/${item.directus_files_id}`}
-                fit={"contain"}
-                _focus={{
-                  border: "none",
-                }}
-              />
+                <Image
+                  h={500}
+                  src={`https://gisoks.ru/cms/assets/${item.directus_files_id}`}
+                  fit={"contain"}
+                  _focus={{
+                    border: "none",
+                  }}
+                />
+
             ),
             onClick: () => setGoToSlide(index),
           };
         })
       );
+
+
     }
   }, [data]);
 
@@ -147,8 +150,8 @@ const AppCarousel: FC = () => {
       outline={"none"}
     >
       {
-        slides.length === 1 && data?.images && <Image src={`/cms/assets/${data?.images[0]?.directus_files_id}`} />
-        }
+        slides.length === 1 && data?.images && <Image src={`https://gisoks.ru/cms/assets/${data?.images[0]?.directus_files_id}`} />
+      }
       {
         slides.length > 1 && <SpringCarousel
           slides={slides}

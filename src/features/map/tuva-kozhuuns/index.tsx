@@ -29,8 +29,9 @@ const TuvanKozhuuns: FC = () => {
 
         await setData();
       }
-    },
+    }
   };
+
 
   return (
     <>
@@ -38,15 +39,27 @@ const TuvanKozhuuns: FC = () => {
         kozhuun,
         index: number
       ) => {
+
         if (Object(kozhuun.properties).hasOwnProperty("description"))
           return (
+
             <GeoJSON
               key={`${generatedId}__${index}`}
               data={kozhuun.geometry as GeoJSON.Polygon}
-              onEachFeature={(feature) => {
-                feature.properties = { ...kozhuun.properties };
-                feature.properties.id = kozhuun.id;
-              }}
+              onEachFeature={
+                (feature) => {
+                  feature.properties = { ...kozhuun.properties };
+                  feature.properties.id = kozhuun.id;
+
+                  // layer.bindTooltip(`<div>
+                  //   <Heading>${kozhuun.properties.description}</Heading>
+                  // </div>`, {
+                  //   permanent: true
+                  // })
+                  // layer.openTooltip()
+
+                }
+              }
               style={{
                 weight: 2,
                 color: "#fff",
@@ -56,8 +69,13 @@ const TuvanKozhuuns: FC = () => {
               }}
 
               eventHandlers={eventHandlers}
-            />
+            >
+              {/* <Popup position={kozhuun.geometry.coordinates}>
+                {kozhuun.properties.description}
+              </Popup> */}
+            </GeoJSON >
           );
+
       })}
     </>
   );

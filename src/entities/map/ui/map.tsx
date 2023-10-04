@@ -34,10 +34,10 @@ const Map: FC = () => {
 
     >
       <RussianDistructs />
-      
+
 
       <TuvanKozhuuns />
-<OksMapMarkers />
+      <OksMapMarkers />
 
       <MapApiController />
     </MapContainer >

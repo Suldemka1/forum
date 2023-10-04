@@ -8,10 +8,8 @@ const OksFilter: FC<IOksFilterComponent> = () => {
   const id = useId()
 
   return (
-    <Box bg={"#040436"} p={5}>
+    <Box py={2}>
       <Stack direction={"column"} gap={5}>
-        {/* <Heading color={"white"} fontSize={24}>Поиск по параметрам</Heading> */}
-
         {
           filters.map((item, index) => {
             return (

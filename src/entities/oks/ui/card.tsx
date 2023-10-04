@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { IOksCardComponent } from "../api/card";
 
@@ -8,22 +8,28 @@ const OksCard: FC<IOksCardComponent> = ({ ...props }) => {
       bgColor={"whitesmoke"}
       color={"#1f1f50"}
       borderRadius={8}
-      p={4}
+      p={3}
       cursor={"pointer"}
       onClick={props.onClick}
       userSelect={"none"}
       className="oks-card"
+      display={"flex"}
+      flexDirection={"column"}
+      gap={2}
       {...props}
     >
-      <Heading
-        as={"p"}
-        fontSize={12}
+      <Text
+        overflow={"hidden"}
+        noOfLines={2}
+        fontWeight={700}
+        lineHeight={1.2}
+        height={10}
+        textAlign={"left"}
         textOverflow={"ellipsis"}
-        lineHeight={"5"}
       >
         {props.name}
-      </Heading>
-      <Text>{props.customer}</Text>
+      </Text>
+      <Text textAlign={"left"} fontWeight={400}>{props.customer}</Text>
     </Box>
   )
 }

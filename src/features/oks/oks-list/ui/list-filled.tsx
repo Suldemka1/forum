@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { FC, useEffect, useId } from "react";
 import { useOksData, OksCard } from "@/entities";
 import { useOksModal } from "@/features";
@@ -32,14 +32,16 @@ const OksListFilled: FC = () => {
   }, [data])
 
   return (
-    <Stack
-      direction={"column"}
+    <Box
+      display={"flex"}
+      flex={1}
+      flexDirection={"column"}
       gap={5}
-      overflowY={"scroll"}
+      zIndex={600}
       overflow={"scroll"}
       className="overflow__hidden"
-      zIndex={600}
-      p={5}
+      scrollSnapStop={"always"}
+      scrollSnapType={"y"}
     >
       {
         data?.map((item, index) => {
@@ -55,7 +57,7 @@ const OksListFilled: FC = () => {
           );
         })
       }
-    </Stack>
+    </Box>
   )
 }
 
